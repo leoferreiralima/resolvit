@@ -1,0 +1,10 @@
+{
+  "name": "@resolvit/backend",
+  "version": "1.0.0",
+  "author": {
+    "name": "Leonardo Ferreira Lina",
+    "email": "leoferreiralima@yahoo.com"
+  },
+  "main": "index.js",
+  "license": "MIT"
+}
