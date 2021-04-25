@@ -1,31 +1,27 @@
 {
-  "name": "@resolvit/backend",
+  "name": "honeypots",
   "version": "1.0.0",
-  "author": {
-    "name": "Leonardo Ferreira Lina",
-    "email": "leoferreiralima@yahoo.com"
-  },
   "main": "index.js",
   "license": "MIT",
-  "scripts": {
-    "test": "jest --passWithNoTests --runInBand --no-cache",
-    "test:unit": "npm test -- --watch -c jest.unit.config.js",
-    "test:integration": "npm test -- --watch -c jest.integration.config.js",
-    "test:staged": "npm test -- --findRelatedTests",
-    "test:coverage": "npm test -- --coverage",
-    "test:coveralls": "npm run test:coverage && coveralls < coverage/lcov.info",
-    "lint": "eslint *.ts --no-error-on-unmatched-pattern",
-    "lint:fix": "npm run lint -- --fix"
-  },
   "devDependencies": {
-    "@commitlint/cli": "^11.0.0",
-    "@commitlint/config-conventional": "^11.0.0",
-    "@types/faker": "^5.1.7",
-    "@typescript-eslint/eslint-plugin": "^4.15.2",
-    "@typescript-eslint/parser": "^4.15.2",
-    "coveralls": "^3.1.0",
+    "@commitlint/cli": "^12.0.1",
+    "@commitlint/config-conventional": "^12.0.1",
+    "@types/bcrypt": "^3.0.0",
+    "@types/cli-progress": "^3.9.1",
+    "@types/cors": "^2.8.10",
+    "@types/express": "^4.17.11",
+    "@types/faker": "^5.5.0",
+    "@types/jsonwebtoken": "^8.5.1",
+    "@types/morgan": "^1.9.2",
+    "@types/passport": "^1.0.6",
+    "@types/passport-github2": "^1.2.4",
+    "@types/passport-jwt": "^3.0.5",
+    "@types/validatorjs": "^3.15.0",
+    "@typescript-eslint/eslint-plugin": "^4.19.0",
+    "@typescript-eslint/parser": "^4.19.0",
+    "cli-progress": "^3.9.0",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^7.20.0",
+    "eslint": "^7.23.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-config-standard-with-typescript": "^20.0.0",
     "eslint-plugin-import": "^2.22.1",
@@ -33,12 +29,37 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-standard": "^5.0.0",
-    "faker": "^5.4.0",
-    "husky": "^5.1.1",
-    "jest": "^26.6.3",
-    "jest-mock-extended": "^1.0.13",
+    "faker": "^5.5.2",
+    "husky": "^5.2.0",
     "lint-staged": "^10.5.4",
-    "ts-jest": "^26.5.1",
-    "typescript": "^4.1.5"
+    "prisma": "^2.21.2",
+    "ts-node-dev": "^1.1.6",
+    "typescript": "^4.2.3"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "lint": "eslint *.ts --no-error-on-unmatched-pattern",
+    "lint:fix": "npm run lint -- --fix",
+    "dev": "ts-node-dev --inspect --respawn --transpile-only src/server.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^2.21.2",
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "date-fns": "^2.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^4.4.1",
+    "jsonwebtoken": "^8.5.1",
+    "module-alias": "^2.2.2",
+    "morgan": "^1.10.0",
+    "passport": "^0.4.1",
+    "passport-github2": "^0.1.12",
+    "passport-gitlab2": "^5.0.0",
+    "passport-jwt": "^4.0.0",
+    "validatorjs": "^3.22.1"
+  },
+  "_moduleAliases": {
+    "@": "src"
   }
 }

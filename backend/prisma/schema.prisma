@@ -1,0 +1,126 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum UserOccupation {
+  DEVELOPER
+  STUDENT
+  ENTHUSIASTIC
+}
+
+model User {
+  email  String  @id @db.VarChar(100)
+  name  String  @db.VarChar(100)
+  githubId  String? @map("github_id")  @db.VarChar(100)
+  gitlabId  String? @map("gitlab_id")  @db.VarChar(100)
+  picture  String? @map("picture_url")  @db.VarChar(255)
+  occupation UserOccupation?
+
+  technologies UserTechnologies[]
+  resolutions ChallengeResolution[]
+  comments ChallengeResolutionComment[]
+
+  notications Notification[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("users")
+}
+
+model Category{
+  id String @id @default(uuid()) @db.Char(36)
+  name String @db.VarChar(50)
+
+  userTechnologies UserTechnologies[]
+
+  challenges Challenge[] @relation("ChallengeCategory",references: [id])
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("categories")
+}
+
+model UserTechnologies {
+  userId String @db.VarChar(100) @map("user_id")
+  categoryId String @db.Char(36) @map("category_id")
+
+  user User @relation(fields: [userId], references: [email])
+  category Category @relation(fields: [categoryId], references: [id])
+
+  focus Boolean
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@id([userId,categoryId])
+  @@map("user_technologies")
+}
+
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+}
+
+model Challenge {
+  id String @id @default(uuid()) @db.Char(36)
+  name String @db.VarChar(50)
+  description String @db.Text
+  difficulty Difficulty
+  helps String[] @db.VarChar(100)
+
+  resolutions ChallengeResolution[]
+
+  categories Category[] @relation("ChallengeCategory",references: [id])
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  @@map("challenges")
+}
+
+model ChallengeResolution {
+  id String @id @default(uuid()) @db.Char(36)
+  userId String @db.VarChar(100) @map("user_id")
+  challengeId String @db.Char(36) @map("challenge_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  resolutionLink String @db.VarChar(100) @map("resolution_link")
+
+  user User @relation(fields: [userId], references: [email])
+  challenge Challenge @relation(fields: [challengeId], references: [id])
+  comments ChallengeResolutionComment[]
+
+  @@map("challenge_resolutions")
+}
+
+model ChallengeResolutionComment {
+  id String @id @default(uuid()) @db.Char(36)
+  
+  resolutionId String @db.Char(36) @map("resolution_id")
+  userId String @db.VarChar(100)  @map("user_id")
+
+  message String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  resolution ChallengeResolution @relation(fields: [resolutionId], references:[id])
+  user User @relation(fields: [userId], references:[email])
+
+  @@map("challenge_resolution_comments")
+}
+
+model Notification {
+  id String @id @default(uuid()) @db.Char(36)
+  userId String @db.VarChar(100)  @map("from_id")
+  message String @db.VarChar(300)
+
+  user User @relation(fields: [userId], references:[email])
+
+  @@map("notifications")
+}
