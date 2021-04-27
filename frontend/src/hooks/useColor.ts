@@ -1,4 +1,5 @@
 import { DefaultTheme } from 'styled-components'
+
 import useThemeProp from './useThemeProp'
 
 export default function useColor(

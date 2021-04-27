@@ -1,5 +1,6 @@
 import { HTMLAttributes } from 'react'
-import Text from '../../../../components/Text'
+
+import Text from '../Text'
 
 interface MessageProps<As extends React.ElementType = React.ElementType>
   extends HTMLAttributes<As> {

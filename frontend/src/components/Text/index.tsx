@@ -1,7 +1,8 @@
 import { HTMLAttributes } from 'react'
-import useColor from '../../hooks/useColor'
-import useFontSize from '../../hooks/useFontSize'
-import { ColorsType, FontSizeType } from '../../styles/theme'
+
+import useColor from '@/hooks/useColor'
+import useFontSize from '@/hooks/useFontSize'
+import { ColorsType, FontSizeType } from '@/styles/theme'
 
 export interface TextProps<As extends React.ElementType = React.ElementType>
   extends HTMLAttributes<As> {

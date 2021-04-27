@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
-import * as Bootstrap from './bootstrap'
+import * as BootstrapOverrides from './bootstrap'
 
 export default createGlobalStyle`
   * {
@@ -11,8 +11,8 @@ export default createGlobalStyle`
   }
 
   body {
-    background-color: #f1f1f0;
-    color: #333;
+    background-color: ${({ theme }) => theme.colors['white.300']};
+    color:  ${({ theme }) => theme.colors['black.100']};
     font-size: 16px;
   }
 
@@ -21,20 +21,8 @@ export default createGlobalStyle`
     width: 100vw;
   }
 
-  h1{
-    font-size: 2.5rem
-  }
-
-  h2{
-    font-size: 2rem
-  }
-
-  h3{
-    font-size: 1.5rem
-  }
-
   #__next{
-    ${Object.values(Bootstrap)}
+    ${Object.values(BootstrapOverrides)}
   }
 
 `
