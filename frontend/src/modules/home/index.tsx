@@ -15,13 +15,13 @@ const Home: React.FC = () => {
           </Col>
         </Row>
         <Row className="h-100 align-items-center flex-row-reverse justify-content-between">
-          <Col xs="12" sm="12" md="6" lg="6" xl="6" className="mb-3">
+          <Col xs="12" sm="12" md="12" lg="6" xl="6" className="mb-3">
             <HomeDraw src="/assets/landing-page-draw.svg" />
           </Col>
           <Col
             xs="12"
             sm="12"
-            md="4"
+            md="12"
             lg="4"
             xl="4"
             className="d-flex flex-column"
@@ -44,14 +44,14 @@ const Home: React.FC = () => {
                 you can interacted and learning with!
               </Text>
             </div>
-            <div>
+            <div className="mb-4">
               <Row>
-                <Col xs="6" sm="6" md="6" lg="6" xl="6">
-                  <Button size="lg" className="w-100">
+                <Col xs="12" sm="12" md="6" lg="6" xl="6">
+                  <Button size="lg" className="w-100 mb-2">
                     Start Now
                   </Button>
                 </Col>
-                <Col xs="6" sm="6" md="6" lg="6" xl="6">
+                <Col xs="12" sm="12" md="6" lg="6" xl="6">
                   <Button size="lg" className="w-100" variant="outline-primary">
                     Login
                   </Button>
