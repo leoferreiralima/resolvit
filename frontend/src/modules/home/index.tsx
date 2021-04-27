@@ -47,7 +47,11 @@ const Home: React.FC = () => {
             <div className="mb-4">
               <Row>
                 <Col xs="12" sm="12" md="6" lg="6" xl="6">
-                  <Button size="lg" className="w-100 mb-2">
+                  <Button
+                    bsPrefix="resolvit btn"
+                    size="lg"
+                    className="w-100 mb-2"
+                  >
                     Start Now
                   </Button>
                 </Col>

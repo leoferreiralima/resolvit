@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 
+import * as Bootstrap from './bootstrap'
+
 export default createGlobalStyle`
   * {
     margin: 0;
@@ -28,6 +30,10 @@ export default createGlobalStyle`
 
   h3{
     font-size: 1.5rem
+  }
+
+  #__next{
+    ${Object.values(Bootstrap)}
   }
 
 `
