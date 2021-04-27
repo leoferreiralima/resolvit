@@ -4,7 +4,7 @@ import useFontSize from '../../hooks/useFontSize'
 import { ColorsType, FontSizeType } from '../../styles/theme'
 
 export interface TextProps<As extends React.ElementType = React.ElementType>
-  extends HTMLAttributes<never> {
+  extends HTMLAttributes<As> {
   as?: As
   size?: FontSizeType
   colorKey?: ColorsType

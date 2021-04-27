@@ -3,6 +3,8 @@ import Logo from '../../components/Logo'
 import Text from '../../components/Text'
 import LandingPage from '../layouts/LandingPage'
 
+import Message from './components/Message'
+
 import { HomeDraw } from './styles'
 
 const Home: React.FC = () => {
@@ -26,32 +28,18 @@ const Home: React.FC = () => {
             xl="4"
             className="d-flex flex-column"
           >
-            <div className="mb-4">
-              <Text as="h2" size="title.md" className="mb-2" fontWeight="bold">
-                From developers to developers
-              </Text>
-              <Text size="text.md">
-                Learning things in practice is the best, here you will find
-                challenges to made you a better developer
-              </Text>
-            </div>
-            <div className="mb-4">
-              <Text as="h2" size="title.md" className="mb-2" fontWeight="bold">
-                Participate on a big community
-              </Text>
-              <Text size="text.md">
-                Have your challenges reviewed by online users on platform! Which
-                you can interacted and learning with!
-              </Text>
-            </div>
+            <Message
+              title="From developers to developers"
+              message="Learning things in practice is the best, here you will find challenges to made you a better developer"
+            />
+            <Message
+              title="Participate on a big community"
+              message="Have your challenges reviewed by online users on platform! Which you can interacted and learning with!"
+            />
             <div className="mb-4">
               <Row>
                 <Col xs="12" sm="12" md="6" lg="6" xl="6">
-                  <Button
-                    bsPrefix="resolvit btn"
-                    size="lg"
-                    className="w-100 mb-2"
-                  >
+                  <Button size="lg" className="w-100 mb-2">
                     Start Now
                   </Button>
                 </Col>
@@ -62,6 +50,13 @@ const Home: React.FC = () => {
                 </Col>
               </Row>
             </div>
+          </Col>
+        </Row>
+        <Row className="mb-1">
+          <Col xs="1" sm="6" md="2" lg="2" xl="2">
+            <Text size="text.sm" colorKey="gray.200">
+              © 2021 · Resolvit · All rights reserved
+            </Text>
           </Col>
         </Row>
       </Container>
