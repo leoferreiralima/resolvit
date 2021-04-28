@@ -1,15 +1,15 @@
-import { Container } from 'react-bootstrap'
-
 import Copyright from '@/components/Copyright'
 import LogoContainer from '@/components/LogoContainer'
 
+import { GridContainer } from './styles'
+
 const BaseLayout: React.FC = ({ children }) => {
   return (
-    <Container fluid className="pt-2 pb-2 pl-5 pr-5 h-100 flex-column d-flex">
+    <GridContainer fluid className="h-100">
       <LogoContainer />
       {children}
       <Copyright />
-    </Container>
+    </GridContainer>
   )
 }
 

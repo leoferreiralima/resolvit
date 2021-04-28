@@ -1,9 +1,11 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  background-image: url('/assets/landing-page-background.svg');
-  background-repeat: no-repeat;
   height: 100%;
-  background-position: left;
-  background-size: cover;
+  @media (min-width: 1200px) {
+    background-image: url('/assets/landing-page-background.svg');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: cover;
+  }
 `
