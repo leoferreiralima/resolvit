@@ -9,6 +9,8 @@ export const GridContainer = styled(Container)`
     'copyright aside';
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 0.5fr 9fr 0.5fr;
+  padding-left: 2rem;
+  padding-right: 2rem;
 
   @media (max-width: 992px) {
     grid-template-areas:
@@ -18,6 +20,8 @@ export const GridContainer = styled(Container)`
       'copyright';
     grid-template-columns: 1fr;
     grid-row-gap: 1.5rem;
-    grid-template-rows: auto;
+    grid-template-rows: 0.5fr 9fr 0.5fr;
+
+    padding: 0.5rem;
   }
 `

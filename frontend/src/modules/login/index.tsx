@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Row, Col, Card } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
 import {
   GithubLoginButton,
   createButton,
