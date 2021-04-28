@@ -5,8 +5,10 @@ import Message from '@/components/Message'
 import LandingPage from '@/modules/layouts/LandingPage'
 
 import { HomeDraw } from './styles'
+import useSizeSelector from '@/hooks/useSizeSelector'
 
 const Home: React.FC = () => {
+
   return (
     <LandingPage>
       <Row className="h-100 align-items-center flex-row-reverse justify-content-between">

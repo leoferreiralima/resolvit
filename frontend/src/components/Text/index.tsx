@@ -19,12 +19,13 @@ const Text: React.FC<TextProps> = ({
   colorKey = 'orange.100',
   fontWeight = 'normal',
   children,
+  style,
   ...props
 }) => {
   const color = useColor(colorKey)
   const fontSize = useFontSize(size)
   return (
-    <Component style={{ fontWeight, color, fontSize }} {...props}>
+    <Component style={{ ...style, fontWeight, color, fontSize }} {...props}>
       {children}
     </Component>
   )

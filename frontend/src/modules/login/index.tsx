@@ -11,12 +11,13 @@ import LandingPage from '@/modules/layouts/LandingPage'
 
 import GitlabLogo from './gitlab-brands.svg'
 import { LoginDraw } from './styles'
+import Link from 'next/link'
 
 const GilabLoginButton = createButton({
   text: 'Log in with Gitlab',
   icon: createSvgIcon(GitlabLogo),
   iconFormat: name => `fa fa-${name}`,
-  style: { background: '#6B53B8' },
+  style: { background: '#6B53B8', textAlign: "center" },
   activeStyle: { background: '#8367D3' }
 })
 
@@ -55,8 +56,16 @@ const Login: React.FC = () => {
                 title="The choice is yours !"
                 message="You can choose you preferred platform to login."
               />
-              <GithubLoginButton className="mb-3" />
-              <GilabLoginButton />
+              <Link href="/onboarding">
+                <a>
+                  <GithubLoginButton className="mb-3" />
+                </a>
+              </Link> 
+              <Link href="/onboarding">
+                <a>
+                  <GilabLoginButton  />
+                </a>
+              </Link>
             </Card.Body>
           </Card>
         </Col>
