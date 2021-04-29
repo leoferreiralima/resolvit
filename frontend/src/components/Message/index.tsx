@@ -21,7 +21,9 @@ const Message: React.FC<MessageProps> = ({
       <Text as="h2" size="title.md" className="mb-2" fontWeight="bold">
         {title}
       </Text>
-      <Text size="text.md">{message}</Text>
+      <Text size="text.md" colorKey="orange.200">
+        {message}
+      </Text>
     </Component>
   )
 }

@@ -25,7 +25,12 @@ const Login: React.FC = () => {
   return (
     <LandingPage>
       <ImageContainer>
-        <Text as="h2" size="title.md" className="w-50 mb-5 text-right">
+        <Text
+          as="h2"
+          size="title.md"
+          colorKey="orange.200"
+          className="w-50 mb-5 text-right"
+        >
           The first step is get your hands on code !
         </Text>
         <LoginDraw

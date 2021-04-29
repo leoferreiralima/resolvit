@@ -1,7 +1,7 @@
 import { Container } from 'react-bootstrap'
 import styled from 'styled-components'
 
-export const GridContainer = styled(Container)`
+export const OnBoardingContainer = styled(Container)`
   display: grid;
   grid-template-areas:
     'logo aside'
@@ -10,7 +10,7 @@ export const GridContainer = styled(Container)`
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 0.5fr 9fr 0.5fr;
   padding-left: 2rem;
-  padding-right: 2rem;
+  padding-right: 0;
 
   @media (max-width: 992px) {
     grid-template-areas:

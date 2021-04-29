@@ -22,6 +22,10 @@ export default createGlobalStyle`
   }
 
   #__next{
+    a {
+      text-decoration: none;
+    }
+
     ${Object.values(BootstrapOverrides)}
   }
 
