@@ -1,10 +1,10 @@
 import { Button } from 'react-bootstrap'
 
+import QuestionStep from '@/components/QuestionStep'
 import Text from '@/components/Text'
+import Wizard from '@/components/Wizard'
 import OnBoardingLayout from '@/modules/layouts/OnBoarding'
 
-import QuestionStep from './components/QuestionStep'
-import Wizard from './components/Wizard'
 import {
   OnBoardingDraw,
   ImageContainer,
@@ -28,7 +28,6 @@ const OnBoarding: React.FC = () => {
       </ImageContainer>
       <OnBoardingContainer>
         <Wizard>
-          <p>a</p>
           <QuestionStep message="What do you do?">
             <OccupationContainer>
               <Button size="lg" className="w-100" variant="outline-primary">
@@ -42,7 +41,8 @@ const OnBoarding: React.FC = () => {
               </Button>
             </OccupationContainer>
           </QuestionStep>
-          <p>a</p>
+          <p>step 2</p>
+          <p>step 3</p>
         </Wizard>
       </OnBoardingContainer>
     </OnBoardingLayout>

@@ -16,6 +16,7 @@
     "react": "17.0.1",
     "react-bootstrap": "^1.5.2",
     "react-dom": "17.0.1",
+    "react-icons": "^4.2.0",
     "react-login-github": "^1.0.7",
     "react-responsive": "^8.2.0",
     "react-social-login-buttons": "^3.4.0",

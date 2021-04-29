@@ -4,8 +4,6 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  grid-area: progress;
-  justify-self: center;
   width: 100%;
   max-width: 500px;
 `
@@ -49,10 +47,12 @@ interface ProgressConnectorProps {
 
 const ProgressConnectorFilled = css`
   border-color: ${({ theme }) => theme.colors['orange.100']}BB;
+  background-color: ${({ theme }) => theme.colors['orange.100']};
 `
 
 const ProgressConnectorDisabled = css`
   border-color: ${({ theme }) => theme.colors['gray.100']}BB;
+  background-color: ${({ theme }) => theme.colors['gray.100']};
 `
 
 export const ProgressConnector = styled.hr<ProgressConnectorProps>`
