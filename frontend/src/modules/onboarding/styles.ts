@@ -36,7 +36,6 @@ export const OccupationContainer = styled.div`
   width: 50%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 
   @media (max-width: 576px) {
     width: 100%;
@@ -50,11 +49,12 @@ export const OccupationContainer = styled.div`
   }
 `
 export const TechnologiesContainer = styled.div`
+  width: 75%;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  width: 75%;
-  height: 100%;
+  align-items: center;
+  justify-content: center;
+
   @media (max-width: 576px) {
     width: 100%;
   }

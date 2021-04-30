@@ -47,14 +47,14 @@ const OnBoarding: React.FC = () => {
           <QuestionStep message="Which technologies do you like?">
             <TechnologiesContainer>
               <Search />
-              <div className="w-100 h-100 mt-5 pt-5 pb-5 d-flex justify-content-center align-items-center">
+              <div className="w-100 mt-5 pt-5 pb-5 d-flex justify-content-center align-items-center">
                 <Badge className="mr-3">Java</Badge>
                 <Badge>Node Js </Badge>
               </div>
             </TechnologiesContainer>
           </QuestionStep>
           <QuestionStep message="What do you want to focus on?">
-            <div className="w-100 h-100 mt-5 pt-5 pb-5 d-flex justify-content-center align-items-center">
+            <div className="w-100 mt-5 pt-5 pb-5 d-flex justify-content-center align-items-center">
               <Badge className="mr-3">Java</Badge>
               <Badge outlined>Node Js </Badge>
             </div>

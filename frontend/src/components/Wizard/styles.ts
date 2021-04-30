@@ -11,7 +11,9 @@ export const Container = styled.div`
   grid-template-rows: 1fr 10fr 1fr;
   grid-row-gap: 2rem;
   flex: 1;
-  height: 100%;
+  @media (min-width: 992px) {
+    height: 100%;
+  }
 `
 export const ProgressContainer = styled.div`
   grid-area: progress;
