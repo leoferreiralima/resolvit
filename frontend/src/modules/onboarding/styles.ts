@@ -49,3 +49,13 @@ export const OccupationContainer = styled.div`
     }
   }
 `
+export const TechnologiesContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 75%;
+  height: 100%;
+  @media (max-width: 576px) {
+    width: 100%;
+  }
+`

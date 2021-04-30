@@ -1,6 +1,8 @@
 import { Button } from 'react-bootstrap'
 
+import Badge from '@/components/Badge'
 import QuestionStep from '@/components/QuestionStep'
+import Search from '@/components/Search'
 import Text from '@/components/Text'
 import Wizard from '@/components/Wizard'
 import OnBoardingLayout from '@/modules/layouts/OnBoarding'
@@ -9,7 +11,8 @@ import {
   OnBoardingDraw,
   ImageContainer,
   OnBoardingContainer,
-  OccupationContainer
+  OccupationContainer,
+  TechnologiesContainer
 } from './styles'
 
 const OnBoarding: React.FC = () => {
@@ -41,8 +44,21 @@ const OnBoarding: React.FC = () => {
               </Button>
             </OccupationContainer>
           </QuestionStep>
-          <p>step 2</p>
-          <p>step 3</p>
+          <QuestionStep message="Which technologies do you like?">
+            <TechnologiesContainer>
+              <Search />
+              <div className="w-100 h-100 mt-5 pt-5 pb-5 d-flex justify-content-center align-items-center">
+                <Badge className="mr-3">Java</Badge>
+                <Badge>Node Js </Badge>
+              </div>
+            </TechnologiesContainer>
+          </QuestionStep>
+          <QuestionStep message="What do you want to focus on?">
+            <div className="w-100 h-100 mt-5 pt-5 pb-5 d-flex justify-content-center align-items-center">
+              <Badge className="mr-3">Java</Badge>
+              <Badge outlined>Node Js </Badge>
+            </div>
+          </QuestionStep>
         </Wizard>
       </OnBoardingContainer>
     </OnBoardingLayout>

@@ -32,11 +32,18 @@ export const ActionContainer = styled.div`
   .btn ~ .btn {
     margin-left: 1rem;
   }
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+    .btn ~ .btn {
+      margin-left: 0;
+      margin-top: 1rem;
+    }
+  }
 `
 
 export const NextButton = styled(Button)`
   width: 100%;
-  max-width: 10rem;
   position: relative;
 
   span {
@@ -49,9 +56,15 @@ export const NextButton = styled(Button)`
     position: absolute;
     right: 1rem;
   }
+
+  @media (min-width: 576px) {
+    max-width: 10rem;
+  }
 `
 
 export const BackButton = styled(Button)`
   width: 100%;
-  max-width: 10rem;
+  @media (min-width: 576px) {
+    max-width: 10rem;
+  }
 `
