@@ -8,11 +8,10 @@ export const Container = styled.div`
     'step'
     'action';
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 10fr 1fr;
-  grid-row-gap: 2rem;
-  flex: 1;
-  @media (min-width: 992px) {
-    height: 100%;
+  grid-template-rows: 1fr 9fr 1fr;
+  height: 100%;
+  @media (max-width: 576px) {
+    grid-template-rows: 1fr auto 1fr;
   }
 `
 export const ProgressContainer = styled.div`

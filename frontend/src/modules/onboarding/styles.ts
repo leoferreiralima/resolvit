@@ -1,13 +1,12 @@
 import styled from 'styled-components'
 
 export const OnBoardingDraw = styled.img`
-  width: 100%;
-  max-width: 700px;
+  height: 100%;
+  max-height: 400px;
 `
 
-export const OnBoardingContainer = styled.main`
+export const OnBoardingContainer = styled.aside`
   grid-area: aside;
-  width: 100%;
   padding: 2rem;
 
   @media (min-width: 992px) {
@@ -19,7 +18,7 @@ export const OnBoardingContainer = styled.main`
   }
 `
 
-export const ImageContainer = styled.aside`
+export const ImageContainer = styled.main`
   grid-area: main;
   display: flex;
   flex-direction: column;
