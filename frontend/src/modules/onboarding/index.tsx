@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import { Button } from 'react-bootstrap'
 
 import Badge from '@/components/Badge'
@@ -16,6 +17,10 @@ import {
 } from './styles'
 
 const OnBoarding: React.FC = () => {
+  const router = useRouter()
+
+  const onFinishedWizard = () => router.push('/home')
+
   return (
     <OnBoardingLayout>
       <ImageContainer>
@@ -30,7 +35,7 @@ const OnBoarding: React.FC = () => {
         <OnBoardingDraw src="/assets/onboarding-page-draw.svg" />
       </ImageContainer>
       <OnBoardingContainer>
-        <Wizard>
+        <Wizard onFinish={onFinishedWizard}>
           <QuestionStep message="What do you do?">
             <OccupationContainer>
               <Button size="lg" className="w-100" variant="outline-primary">

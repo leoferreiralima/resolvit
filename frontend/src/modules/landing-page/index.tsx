@@ -2,13 +2,13 @@ import Link from 'next/link'
 import { Button, Col, Row } from 'react-bootstrap'
 
 import Message from '@/components/Message'
-import LandingPage from '@/modules/layouts/LandingPage'
+import Layout from '@/modules/layouts/LandingPage'
 
 import { HomeDraw, MainContainer, ImageContainer } from './styles'
 
-const Home: React.FC = () => {
+const LandingPage: React.FC = () => {
   return (
-    <LandingPage>
+    <Layout>
       <MainContainer>
         <Message
           title="From developers to developers"
@@ -40,8 +40,8 @@ const Home: React.FC = () => {
       <ImageContainer>
         <HomeDraw src="/assets/landing-page-draw.svg" />
       </ImageContainer>
-    </LandingPage>
+    </Layout>
   )
 }
 
-export default Home
+export default LandingPage

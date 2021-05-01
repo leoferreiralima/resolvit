@@ -15,20 +15,24 @@ interface WizardProps {
   nextButtonText?: string
   finishButtonText?: string
   backButtonText?: string
+  onFinish: () => void
 }
 
 const Wizard: React.FC<WizardProps> = ({
   children,
   nextButtonText = 'Next',
   finishButtonText = "Let's go",
-  backButtonText = 'Back'
+  backButtonText = 'Back',
+  onFinish
 }) => {
   const childs = Children.toArray(children)
 
   const [stepCount, setStepCount] = useState(1)
 
   const nextStep = useCallback(() => {
-    if (stepCount < childs.length) {
+    if (stepCount === childs.length) {
+      onFinish()
+    } else if (stepCount < childs.length) {
       setStepCount(stepCount + 1)
     }
   }, [stepCount])
