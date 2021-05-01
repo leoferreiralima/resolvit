@@ -1,9 +1,16 @@
-// import { Container } from './styles';
+import Copyright from '@/components/Copyright'
+import LogoContainer from '@/components/LogoContainer'
 
-import BaseLayout from "../BaseLayout";
+import { OnBoardingContainer } from './styles'
 
-const OnBoarding: React.FC = ({children}) => {
-  return <BaseLayout> {children} </BaseLayout>;
+const OnBoarding: React.FC = ({ children }) => {
+  return (
+    <OnBoardingContainer fluid className="h-100">
+      <LogoContainer />
+      {children}
+      <Copyright />
+    </OnBoardingContainer>
+  )
 }
 
-export default OnBoarding;
+export default OnBoarding

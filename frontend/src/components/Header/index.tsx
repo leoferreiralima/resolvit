@@ -1,12 +1,12 @@
 import Logo from '../Logo'
 import { Container } from './styles'
 
-const LogoContainer: React.FC = () => {
+const Header: React.FC = () => {
   return (
     <Container>
-      <Logo />
+      <Logo inverse size="text.lg" redirectPath="/home" />
     </Container>
   )
 }
 
-export default LogoContainer
+export default Header
