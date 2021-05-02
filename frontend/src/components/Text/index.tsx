@@ -9,6 +9,9 @@ export interface TextProps<As extends React.ElementType = React.ElementType>
   as?: As
   size?: FontSizeType
   colorKey?: ColorsType
+  href?: string
+  target?: string
+  rel?: string
   // eslint-disable-next-line @typescript-eslint/ban-types
   fontWeight?: 'initial' | 'bold' | 'normal' | (number & {})
 }
