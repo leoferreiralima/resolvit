@@ -40,6 +40,6 @@ const verify: VerifyFunction = async (accessToken, refreshToken, profile, next) 
 export const gitlabStrategy = new Strategy({
   clientID: process.env.GITLAB_CLIENT_ID,
   clientSecret: process.env.GITLAB_CLIENT_SECRET,
-  callbackURL: process.env.GITLAB_CALLBACK_URL,
+  callbackURL: process.env.FRONTEND_URL + process.env.GITLAB_CALLBACK_URL,
   scope: process.env.GITLAB_SCOPE.split(' ')
 }, verify)

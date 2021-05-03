@@ -3,6 +3,7 @@ import { UserDTO } from './user'
 
 export interface FindChallengeResolutionByIdDTO extends PageDTO{
   id: string
+  user?: string
 }
 
 export interface ResolveChallengeDTO {

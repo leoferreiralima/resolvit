@@ -4,12 +4,23 @@ import { validator } from '@/validators/validator-decorator'
 
 import { findResolutionsByChallengeRules } from './rules'
 
-const findResolutionsByChallengeUseCase = async ({ limit, offset, id }: FindChallengeResolutionByIdDTO): Promise<ResponsePageDTO<ChallengeResolutionDTO>> => {
-  const where = {
-    challenge: {
-      id
-    }
-  }
+const findResolutionsByChallengeUseCase = async ({ limit, offset, id , user }: FindChallengeResolutionByIdDTO): Promise<ResponsePageDTO<ChallengeResolutionDTO>> => {
+  const where = user
+    ? ({
+        challenge: {
+          id
+        },
+        user: {
+          email: user
+        }
+      })
+    : (
+        {
+          challenge: {
+            id
+          }
+        }
+      )
 
   const total = await prisma.challengeResolution.count({ where })
 
