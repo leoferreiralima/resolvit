@@ -1,1 +1,1 @@
-export { default, getStaticProps } from '@/modules/home'
+export { default, getServerSideProps } from '@/modules/home'

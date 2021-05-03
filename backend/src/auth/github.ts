@@ -25,6 +25,6 @@ const verify: VerifyFunction = async (accessToken, refreshToken, profile, next) 
 export const githubStrategy = new Strategy({
   clientID: process.env.GITHUB_CLIENT_ID,
   clientSecret: process.env.GITHUB_CLIENT_SECRET,
-  callbackURL: process.env.GITHUB_CALLBACK_URL,
+  callbackURL: process.env.FRONTEND_URL + process.env.GITHUB_CALLBACK_URL,
   scope: process.env.GITHUB_SCOPE.split(',')
 }, verify)

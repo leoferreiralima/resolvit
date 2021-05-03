@@ -1,15 +1,16 @@
+import useUser from '@/hooks/useUser'
+
 import Text from '../Text'
 import { Container, Content, Picture } from './styles'
 
 const Profile: React.FC = () => {
+  const { data } = useUser()
+
   return (
     <Container>
       <Content>
-        <Picture
-          src="https://avatars.githubusercontent.com/u/36305985?v=4"
-          size={8}
-        />
-        <Text colorKey="black.100">Leonardo Ferreira Lima</Text>
+        <Picture src={data?.picture} size={8} />
+        <Text colorKey="black.100">{data?.name}</Text>
         <Text
           as="span"
           colorKey="gray.200"

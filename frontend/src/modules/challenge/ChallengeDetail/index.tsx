@@ -1,6 +1,9 @@
+import { useRouter } from 'next/router'
+
 import Badge from '@/components/Badge'
 import Text from '@/components/Text'
-import { ChallengeDetailDTO } from '@/dto'
+import { ChallengeDetailDTO, ResolveChallengeDTO } from '@/dto'
+import usePostApi from '@/hooks/useApi'
 
 import ChallengeInput from './ChallengeInput'
 import {
@@ -15,16 +18,30 @@ interface ChallengeDetailProps {
 }
 
 const ChallengeDetail: React.FC<ChallengeDetailProps> = ({ challenge }) => {
+  const { id, name, helps, description } = challenge
+  const router = useRouter()
+  const sendSolution = usePostApi<ResolveChallengeDTO>(
+    `/challenge/${id}/resolution`
+  )
+
+  const onSubmit = async (resolutionLink: string): Promise<void> => {
+    await sendSolution({
+      resolutionLink
+    })
+
+    router.push(`/challenge/${id}/my-solutions`)
+    router.reload()
+  }
   return (
     <Container>
       <Text as="h3" size="title.md">
-        {challenge.name}
+        {name}
       </Text>
-      <Text colorKey="black.100">{challenge.description}</Text>
+      <Text colorKey="black.100">{description}</Text>
       <HelpContainer>
         <Text size="title.sm">Need Help?</Text>
         <LinkContainer>
-          {challenge.helps.map((help, index) => (
+          {helps.map((help, index) => (
             <Badge key={index}>
               <Text as="a" href={help} target="_blank" rel="noreferrer">
                 {help}
@@ -34,7 +51,7 @@ const ChallengeDetail: React.FC<ChallengeDetailProps> = ({ challenge }) => {
         </LinkContainer>
       </HelpContainer>
       <SubmitSolutionContainer>
-        <ChallengeInput />
+        <ChallengeInput onSubmit={onSubmit} />
       </SubmitSolutionContainer>
     </Container>
   )

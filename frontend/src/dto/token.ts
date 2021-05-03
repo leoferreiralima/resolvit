@@ -4,6 +4,6 @@ export interface GenerateTokenDTO {
   user: UserDTO
 }
 
-export interface TokenDTO{
+export interface TokenDTO {
   accessToken: string
 }

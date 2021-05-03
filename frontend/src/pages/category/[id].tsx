@@ -1,1 +1,1 @@
-export { default, getStaticProps, getStaticPaths } from '@/modules/category'
+export { default, getServerSideProps } from '@/modules/category'

@@ -23,7 +23,7 @@ const generateTokenUseCase = async ({ user }: GenerateTokenDTO): Promise<TokenDT
   })
 
   return {
-    access_token: jwt
+    accessToken: jwt
   }
 }
 

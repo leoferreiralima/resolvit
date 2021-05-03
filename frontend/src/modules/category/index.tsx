@@ -1,9 +1,10 @@
-import { GetStaticPaths, GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 
+import { nextBackendApi } from '@/api'
 import ChallengeCard from '@/components/ChallengeCard'
 import List from '@/components/List'
 import Profile from '@/components/Profile'
-import { ChallengeDTO, Difficulty } from '@/dto'
+import { ChallengeDTO, ResponsePageDTO } from '@/dto'
 import {
   DefaultLayout,
   LeftPanel,
@@ -12,31 +13,32 @@ import {
 
 // import { Container } from './styles';
 
-export const getStaticProps: GetStaticProps = async () => {
-  const challenges: ChallengeDTO[] = new Array(8).fill({
-    id: 'tyteyteyt',
-    name: 'Rest api',
-    difficulty: Difficulty.HARD
-  })
+export const getServerSideProps: GetServerSideProps = async context => {
+  const { req, query } = context
+  const { id } = query
+
+  const url =
+    process.env.NODE_ENV === 'production'
+      ? 'https://'
+      : 'http://' + req.headers.host
+  let challenges: ChallengeDTO[] = []
+  const api = nextBackendApi(url)
+  try {
+    const { data } = await api.get<ResponsePageDTO<ChallengeDTO>>(
+      `/category/${id}/challenge`,
+      {
+        headers: req.headers
+      }
+    )
+    challenges = data.data || []
+  } catch (e) {
+    console.error(e)
+  }
 
   return {
     props: {
       challenges
-    },
-    revalidate: 10
-  }
-}
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: [
-      {
-        params: {
-          id: 'tyteyteyt'
-        }
-      }
-    ],
-    fallback: true
+    }
   }
 }
 

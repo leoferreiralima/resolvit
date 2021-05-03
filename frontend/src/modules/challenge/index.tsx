@@ -1,61 +1,65 @@
-import { GetStaticPaths, GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import { Tab, Tabs } from 'react-bootstrap'
 
-import { ChallengeDetailDTO, Difficulty } from '@/dto'
+import { nextBackendApi } from '@/api'
+import { ChallengeDetailDTO } from '@/dto'
 import { DefaultLayout, LeftPanel } from '@/modules/layouts/DefaultLayout'
 
 import ChallengeDetail from './ChallengeDetail'
 import { Container } from './styles'
 
-export const getStaticProps: GetStaticProps = async () => {
-  const challenge: ChallengeDetailDTO = {
-    id: 'tyteyteyt',
-    name: 'Rest api',
-    difficulty: Difficulty.HARD,
-    description:
-      'Mussum Ipsum, cacilds vidis litro abertis. Si u mundo tá muito paradis? Toma um mé que o mundo vai girarzis! Copo furadis é disculpa de bebadis, arcu quam euismod magna. Cevadis im ampola pa arma uma pindureta. Não sou faixa preta cumpadi, sou preto inteiris, inteiris.Quem num gosta di mim que vai caçá sua turmis! Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi. Detraxit consequat et quo num tendi nada. Paisis, filhis, espiritis santis. ',
-    categories: [],
-    helps: new Array(4).fill('https://mussumipsum.com/')
+export const getServerSideProps: GetServerSideProps = async context => {
+  const { req, query } = context
+  const { data } = query
+
+  const [id, tab] = data as string[]
+
+  const url =
+    process.env.NODE_ENV === 'production'
+      ? 'https://'
+      : 'http://' + req.headers.host
+
+  let challenge: ChallengeDetailDTO = null
+
+  const api = nextBackendApi(url)
+  try {
+    const { data } = await api.get<ChallengeDetailDTO>(`/challenge/${id}`, {
+      headers: req.headers
+    })
+
+    challenge = data
+  } catch (e) {
+    console.error(e)
   }
 
   return {
     props: {
-      challenge
-    },
-    revalidate: 10
+      challenge,
+      tab: tab || 'challenge'
+    }
   }
 }
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: [
-      {
-        params: {
-          id: 'tyteyteyt'
-        }
-      }
-    ],
-    fallback: true
-  }
-}
-
 interface CategoryProps {
   challenge: ChallengeDetailDTO
+  tab?: string
 }
 
-const Challenge: React.FC<CategoryProps> = ({ challenge }) => {
+const Challenge: React.FC<CategoryProps> = ({
+  challenge,
+  tab = 'challenge'
+}) => {
   return (
     <DefaultLayout>
       <LeftPanel>
         <Container>
-          <Tabs defaultActiveKey="challenge" id="uncontrolled-tab-example">
+          <Tabs defaultActiveKey={tab} id="uncontrolled-tab-example">
             <Tab eventKey="challenge" title="Challenge">
               <ChallengeDetail challenge={challenge} />
             </Tab>
             <Tab eventKey="my-solutions" title="My Solutions">
               <p>Profile</p>
             </Tab>
-            <Tab eventKey="all-solutions" title="All Solutions">
+            <Tab eventKey="solutions" title="All Solutions">
               <p>Contact</p>
             </Tab>
           </Tabs>

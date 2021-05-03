@@ -1,27 +1,36 @@
-import { GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 
+import { nextBackendApi } from '@/api'
 import CategoryCard from '@/components/CategoryCard'
 import List from '@/components/List'
 import Profile from '@/components/Profile'
-import { CategoryDTO } from '@/dto'
+import { CategoryDTO, ResponsePageDTO } from '@/dto'
 import {
   DefaultLayout,
   LeftPanel,
   RightPanel
 } from '@/modules/layouts/DefaultLayout'
 
-export const getStaticProps: GetStaticProps = async () => {
-  const categories: CategoryDTO[] = new Array(8).fill({
-    id: 'tyteyteyt',
-    name: 'Java',
-    challengeCount: 20
-  })
+export const getServerSideProps: GetServerSideProps = async context => {
+  const url =
+    process.env.NODE_ENV === 'production'
+      ? 'https://'
+      : 'http://' + context.req.headers.host
+  let categories: CategoryDTO[] = []
+  const api = nextBackendApi(url)
+  try {
+    const { data } = await api.get<ResponsePageDTO<CategoryDTO>>('/category', {
+      headers: context.req.headers
+    })
+    categories = data.data || []
+  } catch (e) {
+    console.error(e)
+  }
 
   return {
     props: {
       categories
-    },
-    revalidate: 10
+    }
   }
 }
 

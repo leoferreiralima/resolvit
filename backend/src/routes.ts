@@ -14,7 +14,8 @@ import {
   resolutionFeedbacksController,
   challengeResolutionsController,
   resolveChallengeController,
-  sendFeedbackController
+  sendFeedbackController,
+  userController
 } from '@/controllers'
 import { validatorErrorHandler,errorHandler,useCaseErrorHandler,errorHandlerDecorator } from '@/middlewares'
 
@@ -41,6 +42,7 @@ router.get(
 
 router.use(passport.authenticate('jwt'))
 
+router.get('/user', errorHandlerDecorator(userController))
 router.post('/user/preferences',errorHandlerDecorator(addUserPreferencesController))
 
 router.get('/category', errorHandlerDecorator(categoriesController))

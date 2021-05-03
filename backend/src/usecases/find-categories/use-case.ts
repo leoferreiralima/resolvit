@@ -5,18 +5,20 @@ export const findCategories = async ({ limit, offset }: PageDTO): Promise<Respon
   const total = await prisma.category.count()
 
   const categories = await prisma.category.findMany({
-    select: {
-      id: true,
-      name: true
+    include: {
+      challenges: {
+        select: {
+          id: true
+        }
+      }
     },
     skip: offset,
     take: limit
   })
-
   return {
     total,
-    data: categories.map<CategoryDTO>(({ id,name }) => (
-      { id, name }
+    data: categories.map<CategoryDTO>(({ id,name, challenges }) => (
+      { id, name, challengeCount: challenges?.length || 0 }
     ))
   }
 }
