@@ -37,10 +37,11 @@
     "typescript": "^4.2.3"
   },
   "scripts": {
-    "prepare": "husky install",
+    "postinstall": "tsc",
+    "start": "node -r ./module-alias.js ./dist/server.js",
     "lint": "eslint *.ts --no-error-on-unmatched-pattern",
     "lint:fix": "npm run lint -- --fix",
-    "dev": "ts-node-dev --inspect --respawn --transpile-only src/server.ts"
+    "dev": "NODE_ENV=development ts-node-dev -r ./module-alias.js --inspect --respawn --transpile-only src/server.ts"
   },
   "dependencies": {
     "@prisma/client": "^2.21.2",
@@ -58,8 +59,5 @@
     "passport-gitlab2": "^5.0.0",
     "passport-jwt": "^4.0.0",
     "validatorjs": "^3.22.1"
-  },
-  "_moduleAliases": {
-    "@": "src"
   }
 }
