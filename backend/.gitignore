@@ -29,5 +29,4 @@ dist
 .env.test
 
 # keys
-key
 .vercel
