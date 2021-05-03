@@ -18,3 +18,7 @@ export interface ChallengeResolutionDTO {
   createdAt: Date
   user: Pick<UserDTO, 'name'>
 }
+
+export interface FindResolutionByIdDTO{
+  id: string
+}

@@ -15,7 +15,8 @@ import {
   challengeResolutionsController,
   resolveChallengeController,
   sendFeedbackController,
-  userController
+  userController,
+  challengeResolutionDetailController
 } from '@/controllers'
 import { validatorErrorHandler,errorHandler,useCaseErrorHandler,errorHandlerDecorator } from '@/middlewares'
 
@@ -52,6 +53,7 @@ router.get('/challenge/:id', errorHandlerDecorator(challengeDetailController))
 router.get('/challenge/:id/resolution', errorHandlerDecorator(challengeResolutionsController))
 router.post('/challenge/:id/resolution', errorHandlerDecorator(resolveChallengeController))
 
+router.get('/resolution/:id', errorHandlerDecorator(challengeResolutionDetailController))
 router.get('/resolution/:id/feedback', errorHandlerDecorator(resolutionFeedbacksController))
 router.post('/resolution/:id/feedback', errorHandlerDecorator(sendFeedbackController))
 
