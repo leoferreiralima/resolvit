@@ -1,6 +1,5 @@
-import { useRouter } from 'next/router'
 import { Card } from 'react-bootstrap'
-import { FaLink } from 'react-icons/fa'
+import { FaClock } from 'react-icons/fa'
 
 import { FeedbackDTO } from '@/dto'
 
@@ -12,8 +11,6 @@ interface FeedbackCardProps {
 }
 
 const FeedbackCard: React.FC<FeedbackCardProps> = ({ feedback }) => {
-  const router = useRouter()
-
   const formatDate = (dateAsString: string) => {
     const date = Date.parse(dateAsString)
     return new Intl.DateTimeFormat('pt-BR', {
@@ -40,21 +37,8 @@ const FeedbackCard: React.FC<FeedbackCardProps> = ({ feedback }) => {
           </Text>
 
           <Text size="text.sm" colorKey="gray.100" className="mt-1 text-right">
-            {formatDate(feedback.createdAt)}
+            <FaClock /> {formatDate(feedback.createdAt)}
           </Text>
-          {/*
-
-          <Text
-            as="a"
-            size="text.md"
-            href={resolution.resolutionLink}
-            target="_blank"
-            rel="noreferrer"
-            fontWeight={600}
-            className="text-capitalize"
-          >
-            See resolution <FaLink />
-          </Text> */}
         </Card.Body>
       </Card>
     </Container>

@@ -2,8 +2,6 @@ import { PageDTO } from './page'
 import { UserDTO } from './user'
 
 export interface SendFeedbackDTO {
-  resolutionId: string
-  userId: string
   message: string
 }
 
@@ -13,7 +11,7 @@ export interface FindFeedbacksByResolutionDTO extends PageDTO {
 
 export interface FeedbackDTO {
   id: string
-  createdAt: Date
+  createdAt: string
   message: string
   user: Pick<UserDTO, 'name'>
 }

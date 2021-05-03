@@ -17,7 +17,12 @@ const fetcher = async (url: string) => {
     throw new Error(response.data.message)
   }
 }
-export default function useSWRApi<T>(route: string): SWRResponse<T, Error> {
-  const response = useSWR<T, Error>(`/api/backend${route}`, fetcher)
+export default function useSWRApi<T>(
+  route: string,
+  initialData?: T
+): SWRResponse<T, Error> {
+  const response = useSWR<T, Error>(`/api/backend${route}`, fetcher, {
+    initialData: initialData
+  })
   return response
 }
