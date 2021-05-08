@@ -4,18 +4,18 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 4rem 0;
+  border-left: 1px solid ${({ theme }) => theme.colors['gray.300']}33;
 `
 
 export const Content = styled.div`
-  border-left: 1px solid ${({ theme }) => theme.colors['gray.300']}33;
-  height: 100%;
   padding-left: 2rem;
   width: 100%;
   max-width: 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: sticky;
+  top: 5rem;
 `
 
 interface PictureProps {

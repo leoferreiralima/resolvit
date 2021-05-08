@@ -22,7 +22,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
     const { data } = await api.get<ResponsePageDTO<CategoryDTO>>('/category', {
       headers: context.req.headers,
       params: {
-        limit: 20
+        limit: 100
       }
     })
     categories = data.data || []
