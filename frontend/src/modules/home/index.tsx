@@ -20,7 +20,10 @@ export const getServerSideProps: GetServerSideProps = async context => {
   const api = nextBackendApi(url)
   try {
     const { data } = await api.get<ResponsePageDTO<CategoryDTO>>('/category', {
-      headers: context.req.headers
+      headers: context.req.headers,
+      params: {
+        limit: 20
+      }
     })
     categories = data.data || []
   } catch (e) {

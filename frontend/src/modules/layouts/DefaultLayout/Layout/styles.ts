@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
+  min-height: 100%;
 `
 
 export const PanelContainer = styled.div`
@@ -12,6 +12,5 @@ export const PanelContainer = styled.div`
   align-items: stretch;
   padding: 1rem 0;
   margin: 0 2rem;
-  height: 100%;
-  flex: 1;
+  min-height: 100%;
 `

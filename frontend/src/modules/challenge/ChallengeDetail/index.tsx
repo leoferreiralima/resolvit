@@ -42,7 +42,7 @@ const ChallengeDetail: React.FC<ChallengeDetailProps> = ({ challenge }) => {
         <Text size="title.sm">Need Help?</Text>
         <LinkContainer>
           {helps.map((help, index) => (
-            <Badge key={index}>
+            <Badge key={index} className="mr-2">
               <Text as="a" href={help} target="_blank" rel="noreferrer">
                 {help}
               </Text>

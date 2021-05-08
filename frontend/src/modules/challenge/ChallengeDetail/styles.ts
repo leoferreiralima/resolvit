@@ -16,7 +16,6 @@ export const HelpContainer = styled.div`
 export const LinkContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 `
 
 export const SubmitSolutionContainer = styled.div`
