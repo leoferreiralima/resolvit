@@ -18,7 +18,15 @@ import {
   userController,
   challengeResolutionDetailController
 } from '@/controllers'
-import { validatorErrorHandler,errorHandler,useCaseErrorHandler,errorHandlerDecorator } from '@/middlewares'
+import {
+  validatorErrorHandler,
+  errorHandler,
+  useCaseErrorHandler,
+  errorHandlerDecorator,
+  profileMiddleware
+} from '@/middlewares'
+
+import { UserProfile } from '.prisma/client'
 
 const router = Router()
 
@@ -42,6 +50,7 @@ router.get(
 )
 
 router.use(passport.authenticate('jwt'))
+router.use(profileMiddleware([UserProfile.CHALLENGER]))
 
 router.get('/user', errorHandlerDecorator(userController))
 router.post('/user/preferences',errorHandlerDecorator(addUserPreferencesController))

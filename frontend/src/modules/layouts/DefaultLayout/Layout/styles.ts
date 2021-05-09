@@ -11,5 +11,4 @@ export const PanelContainer = styled.div`
   align-items: stretch;
   padding: 1rem 0;
   margin: 0 15rem;
-  /* flex: 1; */
 `

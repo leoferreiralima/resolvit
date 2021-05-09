@@ -1,8 +1,15 @@
+export type UserProfile = {
+  ADMIN: 'ADMIN'
+  CHALLENGER: 'CHALLENGER'
+}
+
 export interface UserDTO {
   email: string
   name: string
+  bio?: string
   githubId?: string
   gitlabId?: string
+  profile?: keyof UserProfile
   picture: string
   createdAt: Date
   updatedAt: Date
@@ -25,4 +32,9 @@ export interface UserPreferencesDTO {
   user: string
   occupation: UserOccupation
   technologies: UserTechnologiesDTO[]
+}
+
+export interface LoginUserDTO {
+  email: string
+  password: string
 }

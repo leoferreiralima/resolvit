@@ -2,11 +2,9 @@ import {SingleBar } from 'cli-progress'
 import {green,cyan,yellow } from 'colors'
 import faker from 'faker'
 
-import { Prisma, PrismaClient,PrismaPromise } from '@prisma/client'
+import { Prisma, PrismaClient,PrismaPromise, UserProfile } from '@prisma/client'
 
 import { Password } from '../src/utils/password'
-
-import recipes from './recipes.json'
 
 const progress = new SingleBar({
   format: `${yellow('{value}/{total}')} | ${green('{bar}')} | ${cyan('{step}')}`,
@@ -51,6 +49,21 @@ async function main() {
   progress.start(3, 0, {
     step: "Initializing"
   });
+
+  const passwordHash = await Password.encode('12345678')
+
+  await prisma.user.upsert({
+    create: { 
+      email: 'admin@yahoo.com',
+      name: 'Leonardo',
+      profile: UserProfile.ADMIN,
+      passwordHash: passwordHash
+    },
+    update: {},
+    where: {
+      email: 'admin@yahoo.com'
+    }
+  })
 
   progress.increment({
     step: "Finished"

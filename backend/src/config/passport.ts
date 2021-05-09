@@ -1,7 +1,8 @@
 import passport from 'passport'
 
-import { githubStrategy, gitlabStrategy, jwtStrategy } from '@/auth'
+import { githubStrategy, gitlabStrategy, jwtStrategy, emailPasswordStrategy } from '@/auth'
 
+passport.use(emailPasswordStrategy)
 passport.use(githubStrategy)
 passport.use(gitlabStrategy)
 passport.use(jwtStrategy)

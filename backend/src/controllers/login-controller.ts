@@ -6,8 +6,9 @@ export const loginController: RequestHandler = async (
   req,
   res
 ): Promise<void> => {
+  const { profile: _, ...user } = req.user
   const token = await generateToken({
-    user: req.user
+    user
   })
 
   res.status(200).json(token)
