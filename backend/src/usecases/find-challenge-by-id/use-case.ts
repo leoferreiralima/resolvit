@@ -25,7 +25,7 @@ const findChallengeByIdUseCase = async ({ id }: FindChallengeByIdDTO): Promise<C
     helps,
     difficulty,
     description,
-    categories: categories.map<CategoryDTO>(({ id,name }) => (
+    categories: categories.map<Omit<CategoryDTO, 'challengeCount'>>(({ id,name }) => (
       { id, name }
     ))
   }

@@ -1,6 +1,7 @@
 import { Strategy, Profile } from 'passport-github2'
 import { VerifyCallback } from 'passport-oauth2'
 
+import { UserProfile } from '@/dto'
 import { createOrUpdateUser } from '@/usecases/create-or-update-user'
 
 type VerifyFunction = (
@@ -15,7 +16,8 @@ const verify: VerifyFunction = async (accessToken, refreshToken, profile, next) 
     email: profile.emails[0]?.value,
     name: profile.displayName,
     picture: profile.photos[0]?.value,
-    githubId: profile.id
+    githubId: profile.id,
+    profile: UserProfile.CHALLENGER
   })
 
   console.log(`${profile.provider} ${user.email}: accessToken[${accessToken}] refreshToken[${refreshToken}]`)
@@ -25,6 +27,6 @@ const verify: VerifyFunction = async (accessToken, refreshToken, profile, next) 
 export const githubStrategy = new Strategy({
   clientID: process.env.GITHUB_CLIENT_ID,
   clientSecret: process.env.GITHUB_CLIENT_SECRET,
-  callbackURL: process.env.GITHUB_CALLBACK_URL,
+  callbackURL: process.env.FRONTEND_URL + process.env.GITHUB_CALLBACK_URL,
   scope: process.env.GITHUB_SCOPE.split(',')
 }, verify)

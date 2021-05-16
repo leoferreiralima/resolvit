@@ -5,5 +5,5 @@ export interface GenerateTokenDTO {
 }
 
 export interface TokenDTO{
-  access_token: string
+  accessToken: string
 }

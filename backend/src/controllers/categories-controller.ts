@@ -9,9 +9,12 @@ export const categoriesController: RequestHandler = async (
 ): Promise<void> => {
   const { limit, offset } = await getPage(req.query)
 
+  const { q } = req.query
+
   const categories = await findCategories({
     limit,
-    offset
+    offset,
+    search: (q as string) || ''
   })
 
   res.status(200).json(categories)

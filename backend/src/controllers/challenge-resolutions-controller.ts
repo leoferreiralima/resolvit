@@ -8,11 +8,12 @@ export const challengeResolutionsController: RequestHandler = async (
   res
 ): Promise<void> => {
   const { limit, offset } = await getPage(req.query)
-
+  const { my } = req.query
   const feedbacks = await findResolutionsByChallenge({
     id: req.params.id,
     limit,
-    offset
+    offset,
+    user: my === 'true' ? req.user?.email : null
   })
 
   res.status(200).json(feedbacks)

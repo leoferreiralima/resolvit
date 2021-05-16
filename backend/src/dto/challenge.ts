@@ -20,5 +20,5 @@ export interface ChallengeDTO {
 export interface ChallengeDetailDTO extends ChallengeDTO {
   helps: string[]
   description: string
-  categories: CategoryDTO[]
+  categories: Array<Omit<CategoryDTO,'challengeCount'>>
 }

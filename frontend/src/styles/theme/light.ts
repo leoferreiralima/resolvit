@@ -12,7 +12,8 @@ export const light = {
     'gray.300': '#6C665D',
     'black.100': '#212529',
     'green.100': '#45AA4F',
-    'blue.100': '#5095D4'
+    'blue.100': '#5095D4',
+    'red.100': '#dd1133'
   },
   fontSize: {
     'text.sm': '0.75rem',

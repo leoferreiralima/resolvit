@@ -1,1 +1,1 @@
-export { default } from '@/modules/home'
+export { default, getServerSideProps } from '@/modules/home'

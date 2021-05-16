@@ -13,14 +13,22 @@ enum UserOccupation {
   ENTHUSIASTIC
 }
 
+enum UserProfile {
+  ADMIN
+  CHALLENGER
+}
+
 model User {
   email  String  @id @db.VarChar(100)
   name  String  @db.VarChar(100)
+  bio String?
   githubId  String? @map("github_id")  @db.VarChar(100)
   gitlabId  String? @map("gitlab_id")  @db.VarChar(100)
   picture  String? @map("picture_url")  @db.VarChar(255)
   occupation UserOccupation?
-
+  passwordHash  String? @map("password_hash")  @db.VarChar(100)
+  profile UserProfile?
+  
   technologies UserTechnologies[]
   resolutions ChallengeResolution[]
   comments ChallengeResolutionComment[]

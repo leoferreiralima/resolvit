@@ -3,6 +3,7 @@ import { UserDTO } from './user'
 
 export interface FindChallengeResolutionByIdDTO extends PageDTO{
   id: string
+  user?: string
 }
 
 export interface ResolveChallengeDTO {
@@ -16,4 +17,8 @@ export interface ChallengeResolutionDTO {
   resolutionLink: string
   createdAt: Date
   user: Pick<UserDTO, 'name'>
+}
+
+export interface FindResolutionByIdDTO{
+  id: string
 }

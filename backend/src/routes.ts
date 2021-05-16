@@ -14,9 +14,19 @@ import {
   resolutionFeedbacksController,
   challengeResolutionsController,
   resolveChallengeController,
-  sendFeedbackController
+  sendFeedbackController,
+  userController,
+  challengeResolutionDetailController
 } from '@/controllers'
-import { validatorErrorHandler,errorHandler,useCaseErrorHandler,errorHandlerDecorator } from '@/middlewares'
+import {
+  validatorErrorHandler,
+  errorHandler,
+  useCaseErrorHandler,
+  errorHandlerDecorator,
+  profileMiddleware
+} from '@/middlewares'
+
+import { UserProfile } from '.prisma/client'
 
 const router = Router()
 
@@ -40,7 +50,9 @@ router.get(
 )
 
 router.use(passport.authenticate('jwt'))
+router.use(profileMiddleware([UserProfile.CHALLENGER]))
 
+router.get('/user', errorHandlerDecorator(userController))
 router.post('/user/preferences',errorHandlerDecorator(addUserPreferencesController))
 
 router.get('/category', errorHandlerDecorator(categoriesController))
@@ -50,6 +62,7 @@ router.get('/challenge/:id', errorHandlerDecorator(challengeDetailController))
 router.get('/challenge/:id/resolution', errorHandlerDecorator(challengeResolutionsController))
 router.post('/challenge/:id/resolution', errorHandlerDecorator(resolveChallengeController))
 
+router.get('/resolution/:id', errorHandlerDecorator(challengeResolutionDetailController))
 router.get('/resolution/:id/feedback', errorHandlerDecorator(resolutionFeedbacksController))
 router.post('/resolution/:id/feedback', errorHandlerDecorator(sendFeedbackController))
 
